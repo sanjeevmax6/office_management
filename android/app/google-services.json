@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "530480070038",
+    "project_id": "officemanagement-564a7",
+    "storage_bucket": "officemanagement-564a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530480070038:android:a1931c8f5af7466d8671b7",
+        "android_client_info": {
+          "package_name": "com.example.office_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530480070038-k043mn9bo4kbhnfnblu59iaguri1rb51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjZBxSGLHNYft_-PySp_Ao2XFHDrp9OSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530480070038-k043mn9bo4kbhnfnblu59iaguri1rb51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
