@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:office_management/services/auth.dart';
+import 'package:office_management/services/database.dart';
 import 'package:office_management/views/adminpage.dart';
 import 'package:office_management/views/home.dart';
 import 'package:office_management/widgets/widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -13,11 +16,32 @@ class _SignInState extends State<SignIn> {
 
   bool isLoading = false;
 
+  var adminData;
+  var emailData;
+
+  Stream usernameStream;
+
   AuthMethods authMethods = new AuthMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   final formKey = GlobalKey<FormState>();
   TextEditingController emailTextEditingController = new TextEditingController();
   TextEditingController passwordTextEditingController = new TextEditingController();
+
+  storeData() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString("email", emailTextEditingController.text);
+  }
+
+  getData() {
+    databaseMethods.getUserNameByEmail(emailTextEditingController.text).then((value) {
+      print("here it is $value");
+    });
+//    usernameStream.listen((event) {
+//      print("value from stream: $event");
+//    });
+  }
+
 
   signIn(){
     if(formKey.currentState.validate()){
@@ -37,6 +61,7 @@ class _SignInState extends State<SignIn> {
             Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (context) => Home()
             ));
+            storeData();
           }
 
         }
@@ -44,6 +69,42 @@ class _SignInState extends State<SignIn> {
 
 
     }
+
+
+//  adminData = databaseMethods.getUserByAdminPermission();
+//  emailData = databaseMethods.getUserByEmail();
+//  print(adminData.runtimeType);
+//  print(emailData.runtimeType);
+
+//  if(adminData.length == emailData.length){
+//    for(int i=0; i<adminData.length; i++){
+//      if(adminData[i] == "y" || adminData[i] == "Y"){
+//        if(emailTextEditingController.text == emailData[i]){
+//          Navigator.pushReplacement(context, MaterialPageRoute(
+//                builder: (context) => AdminPage()
+//            ));
+//        }
+//        else{
+//          Navigator.pushReplacement(context, MaterialPageRoute(
+//                builder: (context) => Home()
+//            ));
+//        }
+//      }
+//      else{
+//        Navigator.pushReplacement(context, MaterialPageRoute(
+//            builder: (context) => SignIn()
+//        ));
+//      }
+//    }
+//  }
+//  else{
+//    Navigator.pushReplacement(context, MaterialPageRoute(
+//        builder: (context) => SignIn()
+//    ));
+//  }
+
+  getData();
+
   }
   @override
   Widget build(BuildContext context) {
