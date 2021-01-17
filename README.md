@@ -1,16 +1,3 @@
 # office_management
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app was planned to help employees upload any documents that needed approval of higher ups and create an interface fro the higher ups to view the docments that required their consent , which they can give by drawing their signature in-app. The signature of all the higher-ups , who have verified the uploaded file would then be added to an offical pdf attached to the file uploaded , which would ultimately act as proof for the employee that the his/her document has been verified. The app was also planned to have a structure showing all the pending documents and their statuses. The employees of an office are supposed to be divided into departments , and further into three levels within their respective department. So if an employee were to upload his/her document for verification , the document would have to be verified by the ones in a higher level in the same department , after which the document would be available to level 4,5,6 employees ,the brass of the office , the management of the office, for final verification.
