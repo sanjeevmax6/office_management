@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:office_management/services/database.dart';
 import 'package:office_management/widgets/widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:file_picker/file_picker.dart';
 
 
 class Home extends StatefulWidget {
@@ -59,7 +60,32 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: appBarMain(context),
       body: Container(
-
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            color: Colors.lightGreen,
+            onPressed: () async {
+              FilePickerResult result = await FilePicker.platform.pickFiles(allowMultiple: true);
+              if(result != null){
+                List<File> files = result.paths.map((path) => File(path)).toList();
+                for(File f in files){
+                  uploadFile = f;
+                  await uploadFiles();
+                }
+              }
+            },
+            child: Text(
+                'Upload File',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 5.0,
