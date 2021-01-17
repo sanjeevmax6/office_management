@@ -40,8 +40,8 @@ class _HomeState extends State<Home> {
     StorageUploadTask uploadTask = storageReference.child(timestamp.toString() + ".jpg").putFile(uploadFile);
 
 
-    var downloadUrl = await (await uploadTask).ref.getDownloadURL();
-    var url = downloadUrl.toString();
+//    var downloadUrl = await (await uploadTask).ref.getDownloadURL();
+//    var url = downloadUrl.toString();
     print(finalUrl);
 
     Map<String, dynamic> fileMap = {
